@@ -20,9 +20,6 @@ import org.jboss.aesh.console.command.CommandOperation;
 import org.jboss.aesh.console.command.invocation.CommandInvocation;
 import org.jboss.aesh.terminal.Key;
 
-/**
- * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
- */
 public class KeyboardInput {
 
     private CommandInvocation ci;    

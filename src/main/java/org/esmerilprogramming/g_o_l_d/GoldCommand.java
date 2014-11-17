@@ -31,9 +31,6 @@ import org.jboss.aesh.terminal.Key;
 import org.jboss.aesh.terminal.Shell;
 import org.jboss.aesh.util.ANSI;
 
-/**
- * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
- */
 @CommandDefinition(name = "gold", description = "")
 public class GoldCommand implements Command<CommandInvocation> {
 

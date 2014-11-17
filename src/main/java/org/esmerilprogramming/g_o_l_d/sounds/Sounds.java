@@ -20,9 +20,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-/**
- * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
- */
 public class Sounds {
 
     private static final String MUSIC = "music_gold.wav";

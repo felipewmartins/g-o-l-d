@@ -15,9 +15,6 @@ package org.esmerilprogramming.g_o_l_d.core;
 
 import org.esmerilprogramming.g_o_l_d.graphics.GoldGraphics;
 
-/**
- * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
- */
 public class Timer implements Runnable {
 
     private int maxX;
