@@ -13,9 +13,6 @@
  */
 package org.esmerilprogramming.g_o_l_d.sprite;
 
-/**
- * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
- */
 public class Player {
 
     public static final String CHARACTER = "X";

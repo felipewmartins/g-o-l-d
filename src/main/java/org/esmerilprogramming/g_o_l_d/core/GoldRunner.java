@@ -25,9 +25,6 @@ import org.esmerilprogramming.g_o_l_d.sprite.Player;
 import org.jboss.aesh.terminal.Shell;
 import org.jboss.aesh.util.ANSI;
 
-/**
- * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
- */
 public class GoldRunner implements Runnable {
 
     private ExecutorService timerService;
