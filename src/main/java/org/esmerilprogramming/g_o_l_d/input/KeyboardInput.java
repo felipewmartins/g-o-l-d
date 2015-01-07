@@ -20,6 +20,9 @@ import org.jboss.aesh.console.command.CommandOperation;
 import org.jboss.aesh.console.command.invocation.CommandInvocation;
 import org.jboss.aesh.terminal.Key;
 
+/**
+ * @author eprogramming
+ */
 public class KeyboardInput {
 
     private CommandInvocation ci;    

@@ -18,6 +18,9 @@ import org.jboss.aesh.console.AeshConsoleBuilder;
 import org.jboss.aesh.console.AeshConsoleImpl;
 import org.jboss.aesh.console.command.registry.AeshCommandRegistryBuilder;
 
+/**
+ * @author eprogramming
+ */
 public class Main {
 
     public static void main(String[] args) {
