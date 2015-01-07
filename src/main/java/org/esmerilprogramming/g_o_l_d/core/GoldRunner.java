@@ -25,6 +25,9 @@ import org.esmerilprogramming.g_o_l_d.sprite.Player;
 import org.jboss.aesh.terminal.Shell;
 import org.jboss.aesh.util.ANSI;
 
+/**
+ * @author eprogramming
+ */
 public class GoldRunner implements Runnable {
 
     private ExecutorService timerService;
@@ -153,8 +156,8 @@ public class GoldRunner implements Runnable {
         
         goldGraphics.cleanup();
         shell.clear();
-        shell.out().print(ANSI.restoreCursor());
-        shell.out().print(ANSI.showCursor());
+        shell.out().print(ANSI.CURSOR_RESTORE);
+        shell.out().print(ANSI.CURSOR_SHOW);
         
         if (executorService != null) {
             executorService.shutdown();

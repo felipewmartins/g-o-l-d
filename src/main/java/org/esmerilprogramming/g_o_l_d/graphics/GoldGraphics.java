@@ -20,6 +20,9 @@ import org.jboss.aesh.terminal.Color;
 import org.jboss.aesh.terminal.Shell;
 import org.jboss.aesh.terminal.TerminalColor;
 
+/**
+ * @author eprogramming
+ */
 public class GoldGraphics {
 
     private Graphics graphics;

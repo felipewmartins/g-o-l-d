@@ -20,14 +20,23 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * @author eprogramming
+ */
 public class Sounds {
 
     private static final String MUSIC = "music_gold.wav";
     private static final String SOUND = "sound_gold.wav";
 
-    private static Clip music = null;
+    private static Clip music;
+    private static Clip sound;
+    
+    private Sounds() {
+        
+    }
     
     public static void playMusic() {
+        music = null;
         try {
             music = AudioSystem.getClip();
             music.open(AudioSystem.getAudioInputStream(Sounds.class.getResourceAsStream(MUSIC)));
@@ -40,7 +49,6 @@ public class Sounds {
     }
 
     public static void playSound() {
-        Clip sound = null;
         try {
             sound = AudioSystem.getClip();
             sound.open(AudioSystem.getAudioInputStream(Sounds.class.getResourceAsStream(SOUND)));

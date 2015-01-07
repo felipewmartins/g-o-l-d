@@ -15,5 +15,5 @@ cd g-o-l-d
 ```
 
 ```shell
- $ ./gradlew run -q
+ $ ./gradlew clean build run -q
 ```

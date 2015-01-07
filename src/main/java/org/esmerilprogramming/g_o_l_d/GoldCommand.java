@@ -31,6 +31,9 @@ import org.jboss.aesh.terminal.Key;
 import org.jboss.aesh.terminal.Shell;
 import org.jboss.aesh.util.ANSI;
 
+/**
+ * @author eprogramming
+ */
 @CommandDefinition(name = "gold", description = "")
 public class GoldCommand implements Command<CommandInvocation> {
 
@@ -82,16 +85,16 @@ public class GoldCommand implements Command<CommandInvocation> {
 
     private void gameModeOff(Shell shell) throws IOException {
         shell.clear();
-        shell.out().print(ANSI.restoreCursor());
-        shell.out().print(ANSI.showCursor());
+        shell.out().print(ANSI.CURSOR_RESTORE);
+        shell.out().print(ANSI.CURSOR_SHOW);
         shell.enableMainBuffer();
         shell.out().flush();
     }
 
     private void gameModeOn(Shell shell) throws IOException {
         shell.clear();
-        shell.out().print(ANSI.saveCursor());
-        shell.out().print(ANSI.hideCursor());
+        shell.out().print(ANSI.CURSOR_SAVE);
+        shell.out().print(ANSI.CURSOR_HIDE);
         shell.enableAlternateBuffer();
         shell.out().flush();
     }

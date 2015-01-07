@@ -37,11 +37,12 @@ mainClassName = 'org.esmerilprogramming.g_o_l_d.Main'
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    compile 'org.jboss.aesh:aesh:0.56'
-    compile 'org.jboss.aesh:aesh-extensions:0.56'
+    compile group: 'org.jboss.aesh', name: 'aesh', version: '0.57-SNAPSHOT'
+    compile group: 'org.jboss.aesh', name: 'aesh-extensions', version: '0.57-SNAPSHOT'
 }
 
 task wrapper(type: Wrapper) {
