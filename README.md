@@ -6,17 +6,14 @@ A simple java game
 
 ![Alt g-o-l-d](https://raw.githubusercontent.com/EsmerilProgramming/g-o-l-d/master/g_o_l_d.png)
 
-
 ```shell
-* $ ./gradlew run -q
-```
-
-or
-
-```shell
-* mvn clean package
+git clone https://github.com/EsmerilProgramming/g-o-l-d.git
 ```
 
 ```shell
-* mvn exec:java
+cd g-o-l-d
+```
+
+```shell
+ $ ./gradlew run -q
 ```
