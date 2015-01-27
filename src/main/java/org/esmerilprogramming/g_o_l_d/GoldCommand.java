@@ -88,7 +88,6 @@ public class GoldCommand implements Command<CommandInvocation> {
         shell.out().print(ANSI.CURSOR_RESTORE);
         shell.out().print(ANSI.CURSOR_SHOW);
         shell.enableMainBuffer();
-        shell.out().flush();
     }
 
     private void gameModeOn(Shell shell) throws IOException {
@@ -96,7 +95,6 @@ public class GoldCommand implements Command<CommandInvocation> {
         shell.out().print(ANSI.CURSOR_SAVE);
         shell.out().print(ANSI.CURSOR_HIDE);
         shell.enableAlternateBuffer();
-        shell.out().flush();
     }
 
 }

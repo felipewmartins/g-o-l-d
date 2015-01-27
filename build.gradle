@@ -42,9 +42,8 @@ repositories {
 
 dependencies {
     compile group: 'org.jboss.aesh', name: 'aesh', version: '0.57-SNAPSHOT'
-    compile group: 'org.jboss.aesh', name: 'aesh-extensions', version: '0.57-SNAPSHOT'
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2'
+    gradleVersion = '2.2.1'
 }
