@@ -59,7 +59,7 @@ public class GoldRunner implements Runnable {
 
         this.goldGraphics.drawPlayer(player);
 
-        Sounds.playMusic();
+        //Sounds.playMusic();
 
         timerService = Executors.newSingleThreadExecutor();
         timerService.execute(new Timer(this.goldGraphics, shell.getSize().getWidth()));
@@ -112,7 +112,7 @@ public class GoldRunner implements Runnable {
 
         if (player.getPositionX() == currentGold.getX() && player.getPositionY() == currentGold.getY()) {
             goldGraphics.getGraphics().drawString("" + player.increaseScore(), 7, 1);
-            Sounds.playSound();
+            //Sounds.playSound();
             goldGraphics.drawGoldPlaces();
             randomGold();
         }
@@ -149,7 +149,7 @@ public class GoldRunner implements Runnable {
     public void gameOver(ExecutorService executorService) throws IOException {
         
         Timer.timer = 0;
-        Sounds.stopMusic();
+        //Sounds.stopMusic();
         if (this.timerService != null) {
             this.timerService.shutdown();
         }
