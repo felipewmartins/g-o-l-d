@@ -27,6 +27,8 @@ targetCompatibility = JavaVersion.VERSION_1_7
 
 run.standardInput = System.in
 
+eclipse.classpath.downloadJavadoc = true
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'G-o-l-d', 'Implementation-Version': version, 'Main-Class': 'Main'
