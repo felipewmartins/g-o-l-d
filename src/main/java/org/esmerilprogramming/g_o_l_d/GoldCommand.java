@@ -26,6 +26,7 @@ import org.jboss.aesh.console.command.CommandOperation;
 import org.jboss.aesh.console.command.CommandResult;
 import org.jboss.aesh.console.command.invocation.CommandInvocation;
 import org.jboss.aesh.graphics.AeshGraphicsConfiguration;
+import org.jboss.aesh.graphics.Graphics;
 import org.jboss.aesh.graphics.GraphicsConfiguration;
 import org.jboss.aesh.terminal.Key;
 import org.jboss.aesh.terminal.Shell;
@@ -38,15 +39,23 @@ import org.jboss.aesh.util.ANSI;
 public class GoldCommand implements Command<CommandInvocation> {
 
     public static ExecutorService executorService;
+    
+    private GoldGraphics goldGraphics;
+    
+    private Graphics graphics;
 
     @Override
     public CommandResult execute(CommandInvocation commandInvocation) throws IOException, InterruptedException {
 
+        // getting the shell.
         Shell shell = commandInvocation.getShell();
+        // preparing to enter in game mode.
         gameModeOn(shell);
 
+        // getting the aesh graphics.
         GraphicsConfiguration gc = new AeshGraphicsConfiguration(shell);
-        GoldGraphics goldGraphics = new GoldGraphics(gc.getGraphics());
+        graphics = gc.getGraphics();
+        goldGraphics = new GoldGraphics(gc.getGraphics());
         goldGraphics.drawReadyScreen(shell);
 
         CommandOperation commandOperation = commandInvocation.getInput();
@@ -84,10 +93,7 @@ public class GoldCommand implements Command<CommandInvocation> {
     }
 
     private void gameModeOff(Shell shell) throws IOException {
-        shell.clear();
-        shell.out().print(ANSI.CURSOR_RESTORE);
-        shell.out().print(ANSI.CURSOR_SHOW);
-        shell.enableMainBuffer();
+        goldGraphics.cleanup();
     }
 
     private void gameModeOn(Shell shell) throws IOException {

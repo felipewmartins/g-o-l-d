@@ -128,7 +128,7 @@ public class GoldGraphics {
     }
 
     public void cleanup() {
-        graphics.cleanup();
+        graphics.clearAndShowCursor();
     }
 
 }
