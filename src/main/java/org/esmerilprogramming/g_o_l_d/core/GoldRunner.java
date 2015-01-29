@@ -19,7 +19,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.esmerilprogramming.g_o_l_d.graphics.GoldGraphics;
-import org.esmerilprogramming.g_o_l_d.sounds.Sounds;
 import org.esmerilprogramming.g_o_l_d.sprite.Gold;
 import org.esmerilprogramming.g_o_l_d.sprite.Player;
 import org.jboss.aesh.terminal.Shell;
