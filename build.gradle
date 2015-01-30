@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.jboss.aesh', name: 'aesh', version: '0.57-SNAPSHOT'
+    compile group: 'org.jboss.aesh', name: 'aesh', version: '0.57'
 }
 
 task wrapper(type: Wrapper) {

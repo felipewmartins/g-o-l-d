@@ -36,18 +36,14 @@ public class GoldGraphics {
 
     public void drawReadyScreen(Shell shell) {
         graphics.setColor(WORLD_COLOR);
-        int middleScreenWidth = (shell.getSize().getWidth() / 2) - 2;
-        int middleScreenHeight = shell.getSize().getHeight() / 2;
-        graphics.drawString("Use keyboard UP, DOWN, LEFT, RIGHT.", middleScreenWidth, middleScreenHeight);
-        graphics.drawString("While playing, press 'q' or 'ESC' to quit.", middleScreenWidth, middleScreenHeight + 2);
-        graphics.drawString("Ready ? (y/n)", middleScreenWidth, middleScreenHeight + 4);
+        graphics.drawString("Use keyboard UP, DOWN, LEFT, RIGHT.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight());
+        graphics.drawString("While playing, press 'q' or 'ESC' to quit.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight() + 2);
+        graphics.drawString("Ready ? (y/n)", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight() + 4);
     }
     
     public void drawScoreScreen(Shell shell) {
         graphics.setColor(WORLD_COLOR);
-        int middleScreenWidth = (shell.getSize().getWidth() / 2) - 2;
-        int middleScreenHeight = shell.getSize().getHeight() / 2;
-        graphics.drawString("Best score: 9999.", middleScreenWidth, middleScreenHeight);
+        graphics.drawString("Best score: 9999.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight());
     }
     
     public void drawWorld(int screenWidth, int screenHeight) {
@@ -57,19 +53,19 @@ public class GoldGraphics {
         graphics.drawString("TIME REMAINING:", screenWidth - 17, 1);
         graphics.drawLine(0, 2, screenWidth, 2);
         graphics.drawLine(0, screenHeight - 1, screenWidth, screenHeight - 1);
-        drawGoldPlaces();
+        
+        // draw gold locations.
+        graphics.drawRect(8, 5, 14, 5);
+        graphics.drawRect(60, 5, 14, 5);
+        graphics.drawRect(8, 15, 14, 5);
+        graphics.drawRect(60, 15, 14, 5);
+        
     }
 
     public void drawPlayer(Player player) {
         graphics.drawString(Player.CHARACTER, player.getPositionX(), player.getPositionY());
     }
 
-    public void drawGoldPlaces() {
-        graphics.drawRect(8, 5, 14, 5);
-        graphics.drawRect(60, 5, 14, 5);
-        graphics.drawRect(8, 15, 14, 5);
-        graphics.drawRect(60, 15, 14, 5);
-    }
 
     public void drawMoveRight(Player player) {
         int pathClear = player.getPositionX();
@@ -110,17 +106,9 @@ public class GoldGraphics {
     }
 
     public void repaintGold(Gold g) {
-        paintGoldColor();
-        graphics.fillRect(g.getX(), g.getY(), Gold.WIDTH, Gold.HEIGHT);
-        paintWorldColor();
-    }
-
-    public void paintWorldColor() {
-        graphics.setColor(WORLD_COLOR);
-    }
-
-    public void paintGoldColor() {
         graphics.setColor(GOLD_COLOR);
+        graphics.fillRect(g.getX(), g.getY(), Gold.WIDTH, Gold.HEIGHT);
+        graphics.setColor(WORLD_COLOR);
     }
 
     public Graphics getGraphics() {
