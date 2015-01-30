@@ -112,7 +112,7 @@ public class GoldRunner implements Runnable {
         if (player.getPositionX() == currentGold.getX() && player.getPositionY() == currentGold.getY()) {
             goldGraphics.getGraphics().drawString("" + player.increaseScore(), 7, 1);
             //Sounds.playSound();
-            goldGraphics.drawGoldPlaces();
+           // goldGraphics.drawGoldPlaces();
             randomGold();
         }
     }

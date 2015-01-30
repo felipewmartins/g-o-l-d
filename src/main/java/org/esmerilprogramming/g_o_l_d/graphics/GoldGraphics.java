@@ -53,19 +53,19 @@ public class GoldGraphics {
         graphics.drawString("TIME REMAINING:", screenWidth - 17, 1);
         graphics.drawLine(0, 2, screenWidth, 2);
         graphics.drawLine(0, screenHeight - 1, screenWidth, screenHeight - 1);
-        drawGoldPlaces();
+        
+        // draw gold locations.
+        graphics.drawRect(8, 5, 14, 5);
+        graphics.drawRect(60, 5, 14, 5);
+        graphics.drawRect(8, 15, 14, 5);
+        graphics.drawRect(60, 15, 14, 5);
+        
     }
 
     public void drawPlayer(Player player) {
         graphics.drawString(Player.CHARACTER, player.getPositionX(), player.getPositionY());
     }
 
-    public void drawGoldPlaces() {
-        graphics.drawRect(8, 5, 14, 5);
-        graphics.drawRect(60, 5, 14, 5);
-        graphics.drawRect(8, 15, 14, 5);
-        graphics.drawRect(60, 15, 14, 5);
-    }
 
     public void drawMoveRight(Player player) {
         int pathClear = player.getPositionX();
