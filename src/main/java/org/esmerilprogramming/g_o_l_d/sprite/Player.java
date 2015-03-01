@@ -20,6 +20,9 @@ public class Player extends Sprite {
   private int score;
   private int steps;
 
+  public Player() {
+  }
+
   public Player(int x, int y) {
     positionX = x;
     positionY = y;

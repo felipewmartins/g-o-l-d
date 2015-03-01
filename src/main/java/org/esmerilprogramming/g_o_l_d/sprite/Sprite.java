@@ -25,8 +25,16 @@ abstract class Sprite {
     return positionX;
   }
 
-   public int getPositionY() {
+  public int getPositionY() {
     return positionY;
+  }
+
+  public void setPositionX(int x) {
+    positionX = x;
+  }
+
+  public void setPositionY(int y) {
+    positionY = y;
   }
 
 }
