@@ -1,11 +1,11 @@
 /*
- * Copyright 2014 EsmerilProgramming.
- * 
+ * 2014 EsmerilProgramming.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -13,45 +13,34 @@
  */
 package org.esmerilprogramming.g_o_l_d.core;
 
-import org.esmerilprogramming.g_o_l_d.graphics.GoldGraphics;
+import org.esmerilprogramming.g_o_l_d.graphics.GameView;
 
 /**
  * @author eprogramming
  */
-public class Timer implements Runnable {
+public class Timer extends Thread {
 
-    private int maxX;
-    public static int timer = 35;
-    private GoldGraphics goldGraphics;
+  private int counter = 35;
+  private GameView view;
 
-    public Timer(GoldGraphics goldGraphics, int maxX) {
-        this.goldGraphics = goldGraphics;
-        this.maxX = maxX;
+  public Timer(GameView view) {
+    this.view = view;
+  }
+
+  @Override
+  public void run() {
+    while (counter > 0) {
+      view.displayCounter(counter);
+      try {
+        Thread.sleep(1000);
+      } catch(InterruptedException e) {
+        e.printStackTrace();
+      }
+      counter = counter - 1;
     }
+  }
 
-    @Override
-    public void run() {
-        while (timer != 0) {
-            if (timer >= 0) {
-                goldGraphics.drawTimeLeft(timer--, maxX);
-                pause();
-            }
-            else {
-                break;
-            }
-        }
-
-        GoldRunner.running = false;
-
-    }
-
-    private void pause() {
-        try {
-            Thread.sleep(1000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
+  public int getCounter() {
+    return counter;
+  }
 }
