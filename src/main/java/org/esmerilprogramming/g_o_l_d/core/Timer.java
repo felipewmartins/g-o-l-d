@@ -43,4 +43,8 @@ public class Timer extends Thread {
   public int getCounter() {
     return counter;
   }
+
+  public void shutdown() {
+    counter = -1;
+  }
 }

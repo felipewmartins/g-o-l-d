@@ -18,11 +18,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import org.esmerilprogramming.g_o_l_d.graphics.GameView;
-import org.esmerilprogramming.g_o_l_d.core.GoldRunner;
-import org.esmerilprogramming.g_o_l_d.graphics.GoldGraphics;
-import org.esmerilprogramming.g_o_l_d.input.KeyboardInput;
 import org.esmerilprogramming.g_o_l_d.core.GoldCore;
-import org.esmerilprogramming.g_o_l_d.core.Worker;
 import org.jboss.aesh.cl.CommandDefinition;
 import org.jboss.aesh.console.command.Command;
 import org.jboss.aesh.console.command.CommandOperation;
@@ -55,32 +51,18 @@ public class GoldCommand implements Command<CommandInvocation> {
 
       view.clear();
       view.displayScenario(); 
-      GoldCore core = new GoldCore(view);
+      GoldCore core = new GoldCore(view, ci);
+      core.start();
+      core.join();
 
-      Worker worker = new Worker(ci, core);
-      worker.start();
-      worker.join();
-
-    }
-    else {
-      view.clear();
-      //goldGraphics.drawScoreScreen(shell);
-      Thread.sleep(2000);
-      //goldGraphics.cleanup();
-      //gameModeOff(shell);
+    } else {
+      view.destroyScreen();
       ci.stop();
     }
 
-    //goldGraphics.drawScoreScreen(shell);
-    Thread.sleep(5000);
-    //goldGraphics.cleanup();
-    //gameModeOff(shell);
+    Thread.sleep(3000);
     ci.stop();
     return CommandResult.SUCCESS;
-  }
-
-  private void gameModeOff(Shell shell) throws IOException {
-    //goldGraphics.cleanup();
   }
 
 }

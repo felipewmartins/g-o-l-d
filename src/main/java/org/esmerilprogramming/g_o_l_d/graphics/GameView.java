@@ -96,6 +96,12 @@ public class GameView {
     }
   }
 
+  public void destroyScreen() {
+    g.clearAndShowCursor();
+    shell.enableMainBuffer();
+    shell.out().flush();
+  }
+
   public void displayScenario() {
     g.setColor(WORLD_COLOR);
     g.drawString("SCORE:", 0, 1);
