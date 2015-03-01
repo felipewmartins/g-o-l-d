@@ -1,5 +1,6 @@
 package org.esmerilprogramming.g_o_l_d.core;
 
+import org.esmerilprogramming.g_o_l_d.sounds.Sounds;
 import org.esmerilprogramming.g_o_l_d.graphics.GameView;
 import org.esmerilprogramming.g_o_l_d.sprite.Gold;
 import org.esmerilprogramming.g_o_l_d.sprite.Player;
@@ -26,6 +27,7 @@ public class GoldCore {
     view.displayPlayer(player);
     timer = new Timer(view);
     timer.start();
+    Sounds.playMusic();
   }
 
   public void moveRight() {
