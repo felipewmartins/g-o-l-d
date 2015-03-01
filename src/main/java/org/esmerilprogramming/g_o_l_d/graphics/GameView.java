@@ -103,6 +103,10 @@ public class GameView {
     g.drawString("TIME REMAINING:", screenWidth - 17, 1);
     g.drawLine(0, 2, screenWidth, 2);
     g.drawLine(0, screenHeight - 1, screenWidth, screenHeight - 1);
+    displayGoldPlaces();
+  }
+
+  public void displayGoldPlaces() {
     g.drawRect(8, 5, 14, 5);
     g.drawRect(60, 5, 14, 5);
     g.drawRect(8, 15, 14, 5);
@@ -117,6 +121,38 @@ public class GameView {
     player.setPositionX(screenWidth / 2 - 2);
     player.setPositionY(screenHeight / 2 - 2);
     g.drawString(player.CHARACTER, player.getPositionX(), player.getPositionY());
+  }
+
+  private void increaseSteps(Player p) {
+    g.drawString("" + p.increaseSteps(), 19, 1);
+  }
+
+  public void playerMoveUp(Player p) {
+    int oldStep = p.getPositionY();
+    g.drawString(Player.CHARACTER, p.getPositionX(), p.decreasePositionY());
+    g.drawString(" ", p.getPositionX(), oldStep);
+    increaseSteps(p);
+  }
+
+  public void playerMoveDown(Player p) {
+    int oldStep = p.getPositionY();
+    g.drawString(Player.CHARACTER, p.getPositionX(), p.increasePositionY());
+    g.drawString(" ", p.getPositionX(), oldStep);
+    increaseSteps(p);
+  }
+
+  public void playerMoveLeft(Player p) {
+    int oldStep = p.getPositionX();
+    g.drawString(Player.CHARACTER, p.decreasePositionX(), p.getPositionY());
+    g.drawString(" ", oldStep, p.getPositionY());
+    increaseSteps(p);
+  }
+
+  public void playerMoveRight(Player p) {
+    int oldStep = p.getPositionX();
+    g.drawString(Player.CHARACTER, p.increasePositionX(), p.getPositionY());
+    g.drawString(" ", oldStep, p.getPositionY());
+    increaseSteps(p);
   }
 
 }
