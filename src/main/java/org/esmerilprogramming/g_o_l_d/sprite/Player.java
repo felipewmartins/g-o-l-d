@@ -17,8 +17,8 @@ public class Player extends Sprite {
 
   public static final String CHARACTER = "X";
 
-  private int score;
   private int steps;
+  private int gold;
 
   public Player() {
   }
@@ -28,12 +28,16 @@ public class Player extends Sprite {
     positionY = y;
   }
 
-  public int getScore() {
-    return score;
+  public int getGold() {
+    return gold;
   }
 
-  public int increaseScore() {
-    return ++score;
+  public int getSteps() {
+    return steps;
+  }
+
+  public int increaseGold() {
+    return ++gold;
   }
 
   public int increaseSteps() {

@@ -14,6 +14,7 @@ public class GoldCore extends Thread {
 
   private volatile  boolean running = true;
 
+  private volatile int gameScore = 9999;
   private CommandInvocation ci;
   private GameView view;
   private Timer timer;
@@ -46,15 +47,18 @@ public class GoldCore extends Thread {
       } catch(InterruptedException e) {
         e.printStackTrace();
       }
-      if (co.getInputKey() == Key.UP) {
+      if (co.getInputKey() == Key.k) {
         moveUp();
-      } else if (co.getInputKey() == Key.DOWN) {
+      } else if (co.getInputKey() == Key.j) {
         moveDown();
-      } else if (co.getInputKey() == Key.LEFT) {
+      } else if (co.getInputKey() == Key.h) {
         moveLeft();
-      } else if (co.getInputKey() == Key.RIGHT) {
+      } else if (co.getInputKey() == Key.l) {
         moveRight();
       } else if (co.getInputKey() == Key.q || co.getInputKey() == Key.ESC) {
+        gameOver();
+      }
+      if (timer.getCounter() == 0 || gameScore == 0) {
         gameOver();
       }
     }
@@ -63,6 +67,8 @@ public class GoldCore extends Thread {
   private void moveRight() {
     if (player.getPositionX() != 79) {
       view.playerMoveRight(player);
+      gameScore = gameScore - 15;
+      view.displayScore(gameScore);
       checkGetGold();
     }
   }
@@ -70,6 +76,8 @@ public class GoldCore extends Thread {
   private void moveLeft() {
     if (player.getPositionX() != 2) {
       view.playerMoveLeft(player);
+      gameScore = gameScore - 15;
+      view.displayScore(gameScore);
       checkGetGold();
     }
   }
@@ -77,6 +85,8 @@ public class GoldCore extends Thread {
   private void moveUp() {
     if (player.getPositionY() != 3) {
       view.playerMoveUp(player);
+      gameScore = gameScore - 15;
+      view.displayScore(gameScore);
       checkGetGold();
     }
   }
@@ -84,6 +94,8 @@ public class GoldCore extends Thread {
   private void moveDown() {
     if (player.getPositionY() != 23) {
       view.playerMoveDown(player);
+      gameScore = gameScore - 15;
+      view.displayScore(gameScore);
       checkGetGold();
     }
   }
@@ -91,6 +103,7 @@ public class GoldCore extends Thread {
   private void gameOver() {
     Sounds.stopMusic();
     timer.shutdown();
+    view.displayGameOver();
     view.destroyScreen();
     shutdown();
   }
@@ -133,8 +146,11 @@ public class GoldCore extends Thread {
       currentGold = g4;
     }
 
-    if (player.getPositionX() == currentGold.getPositionX() && player.getPositionY() == currentGold.getPositionY()) {
-      view.displayScore(player.increaseScore());
+    if (player.getPositionX() == currentGold.getPositionX()
+        && player.getPositionY() == currentGold.getPositionY()) {
+      view.displayGold(player.increaseGold());
+      gameScore = gameScore + 59;
+      view.displayScore(gameScore);
       Sounds.playSound();
       view.displayGoldPlaces();
       randomGold();

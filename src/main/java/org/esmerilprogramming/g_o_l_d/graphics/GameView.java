@@ -50,8 +50,8 @@ public class GameView {
 
   public void displayInitialScreen() {
     g.setColor(WORLD_COLOR);
-    displayAtCenter("Use keyboard: UP,DOWN,LEFT, RIGHT");
-    displayAtCenterPlusY("While playing, press 'q' or 'ESC' to quit.", 2);
+    displayAtCenter("Use vim keys: h, j, k, l");
+    displayAtCenterPlusY("While playing, press 'q' or 'ESC' to quit", 2);
     displayAtCenterPlusY("Ready ? (y/n)", 4);
   }
 
@@ -81,6 +81,26 @@ public class GameView {
     g.setColor(WORLD_COLOR);
   }
 
+  public void displayGameOver() {
+    g.setColor(GOLD_COLOR);
+    for (int i = 0; i < screenWidth; i++) {
+      for (int j = 0; j < screenHeight; j++) {
+        g.fillRect(i,j,1,1);
+        try {
+          Thread.sleep(1);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
+      g.fillRect(i,i,1,1);
+      try {
+        Thread.sleep(1);
+      } catch(InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
   public void prepareScreen() {
     clear();
     shell.out().print(ANSI.CURSOR_SAVE);
@@ -99,13 +119,13 @@ public class GameView {
   public void destroyScreen() {
     g.clearAndShowCursor();
     shell.enableMainBuffer();
-    shell.out().flush();
   }
 
   public void displayScenario() {
     g.setColor(WORLD_COLOR);
-    g.drawString("SCORE:", 0, 1);
+    g.drawString("GOLD:", 0, 1);
     g.drawString("STEPS:", 13, 1);
+    g.drawString("SCORE:", 25, 1);
     g.drawString("TIME REMAINING:", screenWidth - 17, 1);
     g.drawLine(0, 2, screenWidth, 2);
     g.drawLine(0, screenHeight - 1, screenWidth, screenHeight - 1);
@@ -119,8 +139,12 @@ public class GameView {
     g.drawRect(60, 15, 14, 5);
   }
 
+  public void displayGold(int gold) {
+    g.drawString("" + gold, 6, 1);
+  }
+
   public void displayScore(int score) {
-    g.drawString("" + score, 7, 1);
+    g.drawString("" + score, 31, 1);
   }
 
   public void displayPlayer(Player player) {
