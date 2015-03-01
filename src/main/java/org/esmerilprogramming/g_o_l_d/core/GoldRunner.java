@@ -56,7 +56,6 @@ public class GoldRunner implements Runnable {
 
     player = new Player((shell.getSize().getWidth() / 2) - 2, shell.getSize().getHeight() / 2);
 
-    this.goldGraphics.drawPlayer(player);
 
     //Sounds.playMusic();
 
@@ -114,34 +113,6 @@ public class GoldRunner implements Runnable {
       //Sounds.playSound();
       // goldGraphics.drawGoldPlaces();
       randomGold();
-    }
-  }
-
-  public void moveUp() throws InterruptedException {
-    if (player.getPositionY() != 3) {
-      goldGraphics.drawMoveUp(player);
-      checkGetGold();
-    }
-  }
-
-  public void moveDown() throws InterruptedException {
-    if (player.getPositionY() != 23) {
-      goldGraphics.drawMoveDown(player);
-      checkGetGold();
-    }
-  }
-
-  public void moveLeft() throws InterruptedException {
-    if (player.getPositionX() != 2) {
-      goldGraphics.drawMoveLeft(player);
-      checkGetGold();
-    }
-  }
-
-  public void moveRight() throws InterruptedException {
-    if (player.getPositionX() != 79) {
-      goldGraphics.drawMoveRight(player);
-      checkGetGold();
     }
   }
 

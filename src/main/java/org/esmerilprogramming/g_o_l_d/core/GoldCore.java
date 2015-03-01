@@ -31,19 +31,31 @@ public class GoldCore {
   }
 
   public void moveRight() {
-    System.out.println("up");
+    if (player.getPositionX() != 79) {
+      view.playerMoveRight(player);
+      checkGetGold();
+    }
   }
 
   public void moveLeft() {
-    System.out.println("up");
+    if (player.getPositionX() != 2) {
+      view.playerMoveLeft(player);
+      checkGetGold();
+    }
   }
 
   public void moveUp() {
-    System.out.println("up");
+    if (player.getPositionY() != 3) {
+      view.playerMoveUp(player);
+      checkGetGold();
+    }
   }
 
   public void moveDown() {
-    System.out.println("up");
+    if (player.getPositionY() != 23) {
+      view.playerMoveDown(player);
+      checkGetGold();
+    }
   }
 
   public void gameOver() {
@@ -90,8 +102,8 @@ public class GoldCore {
 
     if (player.getPositionX() == currentGold.getPositionX() && player.getPositionY() == currentGold.getPositionY()) {
       view.displayScore(player.increaseScore());
-      //Sounds.playSound();
-      // goldGraphics.drawGoldPlaces();
+      Sounds.playSound();
+      view.displayGoldPlaces();
       randomGold();
     }
   }

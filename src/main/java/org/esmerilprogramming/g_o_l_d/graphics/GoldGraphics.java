@@ -39,39 +39,6 @@ public class GoldGraphics {
     graphics.drawString("Best score: 9999.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight());
   }
 
-  public void drawPlayer(Player player) {
-    graphics.drawString(Player.CHARACTER, player.getPositionX(), player.getPositionY());
-  }
-
-
-  public void drawMoveRight(Player player) {
-    int pathClear = player.getPositionX();
-    graphics.drawString(Player.CHARACTER, player.increasePositionX(), player.getPositionY());
-    graphics.drawString(" ", pathClear, player.getPositionY());
-    graphics.drawString("" + player.increaseSteps(), 19, 1);
-  }
-
-  public void drawMoveLeft(Player player) {
-    int pathClear = player.getPositionX();
-    graphics.drawString(Player.CHARACTER, player.decreasePositionX(), player.getPositionY());
-    graphics.drawString(" ", pathClear, player.getPositionY());
-    graphics.drawString("" + player.increaseSteps(), 19, 1);
-  }
-
-  public void drawMoveDown(Player player) {
-    int pathClear = player.getPositionY();
-    graphics.drawString(Player.CHARACTER, player.getPositionX(), player.increasePositionY());
-    graphics.drawString(" ", player.getPositionX(), pathClear);
-    graphics.drawString("" + player.increaseSteps(), 19, 1);
-  }
-
-  public void drawMoveUp(Player player) {
-    int pathClear = player.getPositionY();
-    graphics.drawString(Player.CHARACTER, player.getPositionX(), player.decreasePositionY());
-    graphics.drawString(" ", player.getPositionX(), pathClear);
-    graphics.drawString("" + player.increaseSteps(), 19, 1);
-  }
-
   public void repaintGold(Gold g) {
     graphics.setColor(GOLD_COLOR);
     graphics.fillRect(g.getPositionX(), g.getPositionY(), Gold.WIDTH, Gold.HEIGHT);
