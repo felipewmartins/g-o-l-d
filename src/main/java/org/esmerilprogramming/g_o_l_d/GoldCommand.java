@@ -41,10 +41,6 @@ import org.jboss.aesh.util.ANSI;
 @CommandDefinition(name = "gold", description = "")
 public class GoldCommand implements Command<CommandInvocation> {
 
-  //public static ExecutorService executorService;
-  //private GoldGraphics goldGraphics;
-  //private Graphics graphics;
-
   @Override
   public CommandResult execute(CommandInvocation ci) throws IOException, InterruptedException {
 

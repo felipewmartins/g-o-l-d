@@ -20,6 +20,8 @@ import org.jboss.aesh.terminal.Color;
 import org.jboss.aesh.terminal.Shell;
 import org.jboss.aesh.graphics.AeshGraphicsConfiguration;
 import org.jboss.aesh.util.ANSI;
+import org.esmerilprogramming.g_o_l_d.sprite.Gold;
+import org.esmerilprogramming.g_o_l_d.sprite.Player;
 
 /**
  * @author eprogramming
@@ -29,10 +31,13 @@ public class GameView {
   private Shell shell;
   private Graphics g;
 
-  int centerWidth;
-  int centerHeight;
-  int screenWidth;
-  int screenHeight;
+  private int centerWidth;
+  private int centerHeight;
+  private int screenWidth;
+  private int screenHeight;
+
+  private static final TerminalColor WORLD_COLOR = new TerminalColor(Color.BLUE, Color.DEFAULT);
+  private static final TerminalColor GOLD_COLOR = new TerminalColor(Color.DEFAULT, Color.YELLOW);
 
   public GameView(Shell shell) {
     this.shell = shell;
@@ -44,7 +49,7 @@ public class GameView {
   }
 
   public void displayInitialScreen() {
-    g.setColor(new TerminalColor(Color.BLUE, Color.DEFAULT));
+    g.setColor(WORLD_COLOR);
     displayAtCenter("Use keyboard: UP,DOWN,LEFT, RIGHT");
     displayAtCenterPlusY("While playing, press 'q' or 'ESC' to quit.", 2);
     displayAtCenterPlusY("Ready ? (y/n)", 4);
@@ -64,10 +69,16 @@ public class GameView {
 
   public void displayCounter(int counter) {
     if (counter >= 10) {
-      g.drawString("" + counter, 20, 1);
+      g.drawString("" + counter, screenWidth - 2, 1);
     } else {
-      g.drawString(" " + counter, 20, 1);
+      g.drawString(" " + counter, screenWidth - 2, 1);
     }
+  }
+
+  public void displayGold(Gold gold) {
+    g.setColor(GOLD_COLOR);
+    g.fillRect(gold.getPositionX(), gold.getPositionY(), Gold.WIDTH, Gold.HEIGHT);
+    g.setColor(WORLD_COLOR);
   }
 
   public void prepareScreen() {
@@ -86,7 +97,7 @@ public class GameView {
   }
 
   public void displayScenario() {
-    g.setColor(new TerminalColor(Color.BLUE, Color.DEFAULT));
+    g.setColor(WORLD_COLOR);
     g.drawString("SCORE:", 0, 1);
     g.drawString("STEPS:", 13, 1);
     g.drawString("TIME REMAINING:", screenWidth - 17, 1);
@@ -96,6 +107,16 @@ public class GameView {
     g.drawRect(60, 5, 14, 5);
     g.drawRect(8, 15, 14, 5);
     g.drawRect(60, 15, 14, 5);
+  }
+
+  public void displayScore(int score) {
+    g.drawString("" + score, 7, 1);
+  }
+
+  public void displayPlayer(Player player) {
+    player.setPositionX(screenWidth / 2 - 2);
+    player.setPositionY(screenHeight / 2 - 2);
+    g.drawString(player.CHARACTER, player.getPositionX(), player.getPositionY());
   }
 
 }
