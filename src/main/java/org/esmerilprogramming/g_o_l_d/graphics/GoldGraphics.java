@@ -25,98 +25,65 @@ import org.jboss.aesh.terminal.TerminalColor;
  */
 public class GoldGraphics {
 
-    private Graphics graphics;
+  private Graphics graphics;
 
-    public static final TerminalColor WORLD_COLOR = new TerminalColor(Color.BLUE, Color.DEFAULT);
-    private static final TerminalColor GOLD_COLOR = new TerminalColor(Color.DEFAULT, Color.YELLOW);
+  public static final TerminalColor WORLD_COLOR = new TerminalColor(Color.BLUE, Color.DEFAULT);
+  private static final TerminalColor GOLD_COLOR = new TerminalColor(Color.DEFAULT, Color.YELLOW);
 
-    public GoldGraphics(Graphics graphics) {
-        this.graphics = graphics;
-    }
+  public GoldGraphics(Graphics graphics) {
+    this.graphics = graphics;
+  }
 
-    public void drawReadyScreen(Shell shell) {
-        graphics.setColor(WORLD_COLOR);
-        graphics.drawString("Use keyboard UP, DOWN, LEFT, RIGHT.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight());
-        graphics.drawString("While playing, press 'q' or 'ESC' to quit.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight() + 2);
-        graphics.drawString("Ready ? (y/n)", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight() + 4);
-    }
-    
-    public void drawScoreScreen(Shell shell) {
-        graphics.setColor(WORLD_COLOR);
-        graphics.drawString("Best score: 9999.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight());
-    }
-    
-    public void drawWorld(int screenWidth, int screenHeight) {
-        graphics.setColor(WORLD_COLOR);
-        graphics.drawString("SCORE:", 0, 1);
-        graphics.drawString("STEPS:", 13, 1);
-        graphics.drawString("TIME REMAINING:", screenWidth - 17, 1);
-        graphics.drawLine(0, 2, screenWidth, 2);
-        graphics.drawLine(0, screenHeight - 1, screenWidth, screenHeight - 1);
-        
-        // draw gold locations.
-        graphics.drawRect(8, 5, 14, 5);
-        graphics.drawRect(60, 5, 14, 5);
-        graphics.drawRect(8, 15, 14, 5);
-        graphics.drawRect(60, 15, 14, 5);
-        
-    }
+  public void drawScoreScreen(Shell shell) {
+    graphics.setColor(WORLD_COLOR);
+    graphics.drawString("Best score: 9999.", shell.getSize().getCenterWidth(), shell.getSize().getCenterHeight());
+  }
 
-    public void drawPlayer(Player player) {
-        graphics.drawString(Player.CHARACTER, player.getPositionX(), player.getPositionY());
-    }
+  public void drawPlayer(Player player) {
+    graphics.drawString(Player.CHARACTER, player.getPositionX(), player.getPositionY());
+  }
 
 
-    public void drawMoveRight(Player player) {
-        int pathClear = player.getPositionX();
-        graphics.drawString(Player.CHARACTER, player.increasePositionX(), player.getPositionY());
-        graphics.drawString(" ", pathClear, player.getPositionY());
-        graphics.drawString("" + player.increaseSteps(), 19, 1);
-    }
+  public void drawMoveRight(Player player) {
+    int pathClear = player.getPositionX();
+    graphics.drawString(Player.CHARACTER, player.increasePositionX(), player.getPositionY());
+    graphics.drawString(" ", pathClear, player.getPositionY());
+    graphics.drawString("" + player.increaseSteps(), 19, 1);
+  }
 
-    public void drawMoveLeft(Player player) {
-        int pathClear = player.getPositionX();
-        graphics.drawString(Player.CHARACTER, player.decreasePositionX(), player.getPositionY());
-        graphics.drawString(" ", pathClear, player.getPositionY());
-        graphics.drawString("" + player.increaseSteps(), 19, 1);
-    }
+  public void drawMoveLeft(Player player) {
+    int pathClear = player.getPositionX();
+    graphics.drawString(Player.CHARACTER, player.decreasePositionX(), player.getPositionY());
+    graphics.drawString(" ", pathClear, player.getPositionY());
+    graphics.drawString("" + player.increaseSteps(), 19, 1);
+  }
 
-    public void drawMoveDown(Player player) {
-        int pathClear = player.getPositionY();
-        graphics.drawString(Player.CHARACTER, player.getPositionX(), player.increasePositionY());
-        graphics.drawString(" ", player.getPositionX(), pathClear);
-        graphics.drawString("" + player.increaseSteps(), 19, 1);
-    }
+  public void drawMoveDown(Player player) {
+    int pathClear = player.getPositionY();
+    graphics.drawString(Player.CHARACTER, player.getPositionX(), player.increasePositionY());
+    graphics.drawString(" ", player.getPositionX(), pathClear);
+    graphics.drawString("" + player.increaseSteps(), 19, 1);
+  }
 
-    public void drawMoveUp(Player player) {
-        int pathClear = player.getPositionY();
-        graphics.drawString(Player.CHARACTER, player.getPositionX(), player.decreasePositionY());
-        graphics.drawString(" ", player.getPositionX(), pathClear);
-        graphics.drawString("" + player.increaseSteps(), 19, 1);
-    }
+  public void drawMoveUp(Player player) {
+    int pathClear = player.getPositionY();
+    graphics.drawString(Player.CHARACTER, player.getPositionX(), player.decreasePositionY());
+    graphics.drawString(" ", player.getPositionX(), pathClear);
+    graphics.drawString("" + player.increaseSteps(), 19, 1);
+  }
 
-    public void drawTimeLeft(int timeLeft, int position) {
-        graphics.setColor(WORLD_COLOR);
-        if (timeLeft >= 10) {
-            graphics.drawString("" + timeLeft, position - 2, 1);
-        }
-        else {
-            graphics.drawString(" " + timeLeft, position - 2, 1);
-        }
-    }
+  public void repaintGold(Gold g) {
+    graphics.setColor(GOLD_COLOR);
+    graphics.fillRect(g.getPositionX(), g.getPositionY(), Gold.WIDTH, Gold.HEIGHT);
+    graphics.setColor(WORLD_COLOR);
+  }
 
-    public void repaintGold(Gold g) {
-        graphics.setColor(GOLD_COLOR);
-        graphics.fillRect(g.getX(), g.getY(), Gold.WIDTH, Gold.HEIGHT);
-        graphics.setColor(WORLD_COLOR);
-    }
+  public Graphics getGraphics() {
+    return graphics;
+  }
 
-    public Graphics getGraphics() {
-        return graphics;
-    }
-
-    public void cleanup() {
-        graphics.clearAndShowCursor();
-    }
+  public void cleanup() {
+    graphics.clearAndShowCursor();
+  }
 
 }

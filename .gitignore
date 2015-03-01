@@ -1,11 +1,4 @@
-.project
-.classpath
-.settings
 target
-*.iml
-*.ipr
-*.iws
-.idea
 build
 .gradle
 out

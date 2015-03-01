@@ -13,43 +13,20 @@
  */
 package org.esmerilprogramming.g_o_l_d.sprite;
 
-public class Player extends Sprite {
+/**
+ * @author eprogramming
+ */
+abstract class Sprite {
 
-  public static final String CHARACTER = "X";
+  protected int positionX;
+  protected int positionY;
 
-  private int score;
-  private int steps;
-
-  public Player(int x, int y) {
-    positionX = x;
-    positionY = y;
+  public int getPositionX() {
+    return positionX;
   }
 
-  public int getScore() {
-    return score;
+   public int getPositionY() {
+    return positionY;
   }
 
-  public int increaseScore() {
-    return ++score;
-  }
-
-  public int increaseSteps() {
-    return ++steps;
-  }
-
-  public int decreasePositionX() {
-    return --positionX;
-  }
-
-  public int decreasePositionY() {
-    return --positionY;
-  }
-
-  public int increasePositionX() {
-    return ++positionX;
-  }
-
-  public int increasePositionY() {
-    return ++positionY;
-  }
 }
