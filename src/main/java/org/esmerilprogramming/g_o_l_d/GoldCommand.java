@@ -55,13 +55,14 @@ public class GoldCommand implements Command<CommandInvocation> {
       core.start();
       core.join();
 
-    } else {
-      view.destroyScreen();
-      ci.stop();
     }
 
-    Thread.sleep(3000);
+    view.destroyScreen();
+    Thread.sleep(100);
+    shell.out().flush();
+    Thread.sleep(100);
     ci.stop();
+    Thread.sleep(100);
     return CommandResult.SUCCESS;
   }
 
