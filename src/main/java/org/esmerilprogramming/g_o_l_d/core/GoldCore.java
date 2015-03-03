@@ -28,7 +28,9 @@ public class GoldCore extends Thread {
 
   private int pastGold;
 
-  public GoldCore(GameView view, CommandInvocation ci) {
+  private Sounds sounds;
+
+  public GoldCore(GameView view, Sounds sounds, CommandInvocation ci) {
     this.view = view;
     this.ci = ci;
     randomGold();
@@ -36,7 +38,8 @@ public class GoldCore extends Thread {
     view.displayPlayer(player);
     timer = new Timer(view);
     timer.start();
-    Sounds.playMusic();
+    this.sounds = sounds;
+    this.sounds.playMusic();
   }
 
   public void run() {
@@ -102,9 +105,8 @@ public class GoldCore extends Thread {
   }
 
   private void gameOver() {
-    Sounds.stopMusic();
     timer.interrupt();
-    view.displayGameOver();
+   // view.displayGameOver();
     Thread.currentThread().interrupt();
   }
 
@@ -151,14 +153,11 @@ public class GoldCore extends Thread {
       view.displayGold(player.increaseGold());
       gameScore = gameScore + 59;
       view.displayScore(gameScore);
-      Sounds.playSound();
+      //sounds.playSound();
       view.displayGoldPlaces();
       randomGold();
     }
   }
 
-  //public void shutdown() {
-  //  running = false;
-  //}
 
 }

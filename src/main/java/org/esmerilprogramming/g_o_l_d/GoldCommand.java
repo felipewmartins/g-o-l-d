@@ -15,6 +15,7 @@ package org.esmerilprogramming.g_o_l_d;
 
 import java.io.IOException;
 
+import org.esmerilprogramming.g_o_l_d.sounds.Sounds;
 import org.esmerilprogramming.g_o_l_d.graphics.GameView;
 import org.esmerilprogramming.g_o_l_d.core.GoldCore;
 import org.jboss.aesh.cl.CommandDefinition;
@@ -23,7 +24,7 @@ import org.jboss.aesh.console.command.CommandOperation;
 import org.jboss.aesh.console.command.CommandResult;
 import org.jboss.aesh.console.command.invocation.CommandInvocation;
 import org.jboss.aesh.terminal.Key;
-
+import java.util.Set;
 /**
  * @author eprogramming
  */
@@ -38,19 +39,30 @@ public class GoldCommand implements Command<CommandInvocation> {
     view.displayInitialScreen();
 
     GoldCore core = null;
+    Sounds sounds = new Sounds();
     CommandOperation co = ci.getInput();
     if (co.getInputKey() == Key.y) {
 
       view.clear();
       view.displayScenario(); 
-      core = new GoldCore(view, ci);
+      core = new GoldCore(view, sounds, ci);
       core.start();
       core.join();
 
     }
 
-    view.destroyScreen();
+    sounds.stopMusic();
+    //sounds.stopSound();
+//    view.destroyScreen();
     core.interrupt();
+
+//    Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
+//    Thread[] threadArray = threadSet.toArray(new Thread[threadSet.size()]);
+//    for (Thread t : threadArray) {
+//      System.out.println(t.getName());
+//    }
+    ci.getShell().clear();
+    ci.getShell().enableMainBuffer();
     ci.stop();
     return CommandResult.SUCCESS;
   }
