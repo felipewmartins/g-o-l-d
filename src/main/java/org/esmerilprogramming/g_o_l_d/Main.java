@@ -24,6 +24,7 @@ public class Main {
   public static void main(String[] args) {
     AeshConsoleBuilder aeshConsoleBuilder = new AeshConsoleBuilder();
     aeshConsoleBuilder.addCommand(new GoldCommand()).executeAtStart("gold\n");
+//    aeshConsoleBuilder.addCommand(new TypeCommand()).executeAtStart("type\n");
     AeshConsole aeshConsole = aeshConsoleBuilder.create();
     aeshConsole.start();
   }

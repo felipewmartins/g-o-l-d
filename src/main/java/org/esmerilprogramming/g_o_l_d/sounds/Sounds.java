@@ -31,45 +31,58 @@ public class Sounds {
   private static final String MUSIC = "music_gold.wav";
   private static final String SOUND = "sound_gold.wav";
 
-  private static Clip music;
-  private static Clip sound;
+  private Clip music;
+  private Clip sound;
+  private AudioInputStream musicStream;
+  private AudioInputStream soundStream;
 
-  private Sounds() {
-
-  }
-
-  public static void playMusic() {
-    music = null;
+  public Sounds() {
     try {
-      InputStream is = Sounds.class.getResourceAsStream(MUSIC);
-      InputStream buffered = new BufferedInputStream(is);
-      AudioInputStream ais = AudioSystem.getAudioInputStream(buffered);
+      InputStream mis = Sounds.class.getResourceAsStream(MUSIC);
+      InputStream musicBuffered = new BufferedInputStream(mis);
+      musicStream = AudioSystem.getAudioInputStream(musicBuffered);
       music = AudioSystem.getClip();
-      music.open(ais);
+      music.open(musicStream);
+      InputStream sis = Sounds.class.getResourceAsStream(SOUND);
+      InputStream soundBuffered = new BufferedInputStream(sis);
+      soundStream = AudioSystem.getAudioInputStream(soundBuffered);
+      sound = AudioSystem.getClip();
+      sound.open(soundStream);
     }
     catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
       e.printStackTrace();
     }
+  }
+
+  public void playMusic() {
     music.start();
     music.loop(3);
   }
 
-  public static void playSound() {
-    try {
-      InputStream is = Sounds.class.getResourceAsStream(SOUND);
-      InputStream buffered = new BufferedInputStream(is);
-      AudioInputStream ais = AudioSystem.getAudioInputStream(buffered);
-      sound = AudioSystem.getClip();
-      sound.open(ais);
-    }
-    catch (IOException | UnsupportedAudioFileException | LineUnavailableException e) {
-      e.printStackTrace();
-    }
+  public void playSound() {
     sound.start();
   }
 
-  public static void stopMusic() {
+  public void stopMusic() {
+    music.loop(-1);
     music.stop();
+    music.close();
+    try {
+      musicStream.close();
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void stopSound() {
+    sound.loop(-1);
+    sound.stop();
+    sound.close();
+    try {
+      soundStream.close();
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
   }
 
 }

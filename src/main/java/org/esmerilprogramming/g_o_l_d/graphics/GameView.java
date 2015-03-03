@@ -118,10 +118,10 @@ public class GameView {
     }
   }
 
-  public void destroyScreen() {
-    g.clearAndShowCursor();
-    shell.enableMainBuffer();
-  }
+  //public void destroyScreen() {
+  //  g.clearAndShowCursor();
+  //  shell.enableMainBuffer();
+  //}
 
   public void displayScenario() {
     g.setColor(WORLD_COLOR);
