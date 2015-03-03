@@ -29,12 +29,13 @@ public class Timer extends Thread {
 
   @Override
   public void run() {
-    while (counter > 0) {
+    while (counter >= 0) {
       view.displayCounter(counter);
       try {
         Thread.sleep(1000);
       } catch(InterruptedException e) {
-        e.printStackTrace();
+        Thread.currentThread().interrupt();
+        break;
       }
       counter = counter - 1;
     }
@@ -44,7 +45,4 @@ public class Timer extends Thread {
     return counter;
   }
 
-  public void shutdown() {
-    counter = -1;
-  }
 }

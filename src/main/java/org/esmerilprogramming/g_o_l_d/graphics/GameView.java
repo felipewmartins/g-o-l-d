@@ -89,14 +89,16 @@ public class GameView {
         try {
           Thread.sleep(1);
         } catch (InterruptedException e) {
-          e.printStackTrace();
+          Thread.currentThread().interrupt();
+          break;
         }
       }
       g.fillRect(i,i,1,1);
       try {
         Thread.sleep(1);
       } catch(InterruptedException e) {
-        e.printStackTrace();
+        Thread.currentThread().interrupt();
+        break;
       }
     }
   }

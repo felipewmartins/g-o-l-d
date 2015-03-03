@@ -25,22 +25,22 @@ targetCompatibility = 1.7
 run.standardInput = System.in
 
 jar {
-    manifest {
-        attributes 'Implementation-Title': 'G-o-l-d', 'Implementation-Version': version, 'Main-Class': 'Main'
-    }
+  manifest {
+    attributes 'Implementation-Title': 'G-o-l-d', 'Implementation-Version': version, 'Main-Class': 'Main'
+  }
 }
 
 mainClassName = 'org.esmerilprogramming.g_o_l_d.Main'
 
 repositories {
-    mavenCentral()
-    mavenLocal()
+  mavenCentral()
+  mavenLocal()
 }
 
 dependencies {
-    compile group: 'org.jboss.aesh', name: 'aesh', version: '0.57'
+  compile group: 'org.jboss.aesh', name: 'aesh', version: '0.58-SNAPSHOT'
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
+  gradleVersion = '2.2.1'
 }
