@@ -16,7 +16,6 @@ package org.esmerilprogramming.g_o_l_d;
 import org.jboss.aesh.console.AeshConsole;
 import org.jboss.aesh.console.AeshConsoleBuilder;
 
-
 /**
  * @author eprogramming
  */

@@ -14,8 +14,6 @@
 package org.esmerilprogramming.g_o_l_d;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.esmerilprogramming.g_o_l_d.graphics.GameView;
 import org.esmerilprogramming.g_o_l_d.core.GoldCore;
@@ -24,12 +22,7 @@ import org.jboss.aesh.console.command.Command;
 import org.jboss.aesh.console.command.CommandOperation;
 import org.jboss.aesh.console.command.CommandResult;
 import org.jboss.aesh.console.command.invocation.CommandInvocation;
-import org.jboss.aesh.graphics.AeshGraphicsConfiguration;
-import org.jboss.aesh.graphics.Graphics;
-import org.jboss.aesh.graphics.GraphicsConfiguration;
 import org.jboss.aesh.terminal.Key;
-import org.jboss.aesh.terminal.Shell;
-import org.jboss.aesh.util.ANSI;
 
 /**
  * @author eprogramming
@@ -40,29 +33,25 @@ public class GoldCommand implements Command<CommandInvocation> {
   @Override
   public CommandResult execute(CommandInvocation ci) throws IOException, InterruptedException {
 
-    Shell shell = ci.getShell();
-
-    GameView view = new GameView(shell);
+    GameView view = new GameView(ci.getShell());
     view.prepareScreen();
     view.displayInitialScreen();
 
+    GoldCore core = null;
     CommandOperation co = ci.getInput();
     if (co.getInputKey() == Key.y) {
 
       view.clear();
       view.displayScenario(); 
-      GoldCore core = new GoldCore(view, ci);
+      core = new GoldCore(view, ci);
       core.start();
       core.join();
 
     }
 
     view.destroyScreen();
-    Thread.sleep(100);
-    shell.out().flush();
-    Thread.sleep(100);
+    core.interrupt();
     ci.stop();
-    Thread.sleep(100);
     return CommandResult.SUCCESS;
   }
 

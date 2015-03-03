@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class GoldCore extends Thread {
 
-  private volatile  boolean running = true;
+  //private volatile  boolean running = true;
 
   private volatile int gameScore = 9999;
   private CommandInvocation ci;
@@ -40,12 +40,13 @@ public class GoldCore extends Thread {
   }
 
   public void run() {
-    while(running) {
+    while(true) {
       CommandOperation co = null;
       try {
         co = ci.getInput();
       } catch(InterruptedException e) {
-        e.printStackTrace();
+        Thread.currentThread().interrupt();
+        break;
       }
       if (co.getInputKey() == Key.k) {
         moveUp();
@@ -58,7 +59,7 @@ public class GoldCore extends Thread {
       } else if (co.getInputKey() == Key.q || co.getInputKey() == Key.ESC) {
         gameOver();
       }
-      if (timer.getCounter() == 0 || gameScore == 0) {
+      if (timer.getCounter() <= 0 || gameScore == 0) {
         gameOver();
       }
     }
@@ -102,10 +103,9 @@ public class GoldCore extends Thread {
 
   private void gameOver() {
     Sounds.stopMusic();
-    timer.shutdown();
+    timer.interrupt();
     view.displayGameOver();
-    view.destroyScreen();
-    shutdown();
+    Thread.currentThread().interrupt();
   }
 
   private void randomGold() {
@@ -157,8 +157,8 @@ public class GoldCore extends Thread {
     }
   }
 
-  public void shutdown() {
-    running = false;
-  }
+  //public void shutdown() {
+  //  running = false;
+  //}
 
 }
