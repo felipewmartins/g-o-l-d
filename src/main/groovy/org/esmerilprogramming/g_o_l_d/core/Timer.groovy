@@ -11,38 +11,38 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.esmerilprogramming.g_o_l_d.core;
+package org.esmerilprogramming.g_o_l_d.core
 
-import org.esmerilprogramming.g_o_l_d.graphics.GameView;
+import org.esmerilprogramming.g_o_l_d.graphics.GameView
 
 /**
  * @author eprogramming
  */
-public class Timer extends Thread {
+class Timer extends Thread {
 
-  private int counter = 35;
-  private GameView view;
+  private intrcounter = 35
+  private GameView view
 
-  public Timer(GameView view) {
-    this.view = view;
+  Timer(GameView view) {
+    this.view = view
   }
 
   @Override
-  public void run() {
+  void run() {
     while (counter >= 0) {
-      view.displayCounter(counter);
+      view.displayCounter(counter)
       try {
-        Thread.sleep(1000);
+        Thread.sleep(1000)
       } catch(InterruptedException e) {
-        Thread.currentThread().interrupt();
-        break;
+        Thread.currentThread().interrupt()
+        break
       }
-      counter = counter - 1;
+      counter = counter - 1
     }
   }
 
-  public int getCounter() {
-    return counter;
+  int getCounter() {
+    return counter
   }
 
 }
