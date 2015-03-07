@@ -13,24 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'application'
 
 group = 'org.esmerilprogramming'
 version = '0.1'
+mainClassName = 'org.esmerilprogramming.g_o_l_d.Main'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 run.standardInput = System.in
 
-jar {
+/*jar {
   manifest {
     attributes 'Implementation-Title': 'G-o-l-d', 'Implementation-Version': version, 'Main-Class': 'Main'
   }
-}
-
-mainClassName = 'org.esmerilprogramming.g_o_l_d.Main'
+}*/
 
 repositories {
   mavenCentral()
@@ -38,9 +37,11 @@ repositories {
 }
 
 dependencies {
+  compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.0'
   compile group: 'org.jboss.aesh', name: 'aesh', version: '0.58-SNAPSHOT'
 }
 
 task wrapper(type: Wrapper) {
   gradleVersion = '2.2.1'
 }
+
