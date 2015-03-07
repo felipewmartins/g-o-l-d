@@ -11,30 +11,14 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.esmerilprogramming.g_o_l_d.sprite;
+package org.esmerilprogramming.g_o_l_d.sprite
 
 /**
  * @author eprogramming
  */
 abstract class Sprite {
 
-  protected int positionX;
-  protected int positionY;
-
-  public int getPositionX() {
-    return positionX;
-  }
-
-  public int getPositionY() {
-    return positionY;
-  }
-
-  public void setPositionX(int x) {
-    positionX = x;
-  }
-
-  public void setPositionY(int y) {
-    positionY = y;
-  }
+  protected int positionX
+  protected int positionY
 
 }

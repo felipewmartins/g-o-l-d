@@ -11,16 +11,41 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.esmerilprogramming.g_o_l_d.sprite;
+package org.esmerilprogramming.g_o_l_d.sprite
 
-public class Gold extends Sprite {
+class Player extends Sprite {
 
-  public static final int HEIGHT = 1;
-  public static final int WIDTH = 1;
+  public static final String CHARACTER = "X"
 
-  public Gold(int x, int y) {
-    positionX = x;
-    positionY = y;
+  int steps
+  int gold
+
+  Player(int x, int y) {
+    positionX = x
+    positionY = y
   }
 
+  int increaseGold() {
+    ++gold
+  }
+
+  int increaseSteps() {
+    ++steps
+  }
+
+  int decreasePositionX() {
+    --positionX
+  }
+
+  int decreasePositionY() {
+    --positionY
+  }
+
+  int increasePositionX() {
+    ++positionX
+  }
+
+  int increasePositionY() {
+    ++positionY
+  }
 }
