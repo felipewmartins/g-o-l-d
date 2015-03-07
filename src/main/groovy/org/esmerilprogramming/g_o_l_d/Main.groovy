@@ -19,13 +19,12 @@ import org.jboss.aesh.console.AeshConsoleBuilder;
 /**
  * @author eprogramming
  */
-public class Main {
+class Main {
 
-  public static void main(String[] args) {
-    AeshConsoleBuilder aeshConsoleBuilder = new AeshConsoleBuilder();
-    aeshConsoleBuilder.addCommand(new GoldCommand()).executeAtStart("gold\n");
-//    aeshConsoleBuilder.addCommand(new TypeCommand()).executeAtStart("type\n");
-    AeshConsole aeshConsole = aeshConsoleBuilder.create();
-    aeshConsole.start();
+  static main(args) {
+    def acb = new AeshConsoleBuilder()
+    acb.addCommand(new GoldCommand()).executeAtStart("gold\n")
+    def ac = acb.create()
+    ac.start()
   }
 }
