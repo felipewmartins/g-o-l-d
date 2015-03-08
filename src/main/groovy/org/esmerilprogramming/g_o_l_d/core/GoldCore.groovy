@@ -23,9 +23,7 @@ class GoldCore extends Thread {
   private Gold g4 = new Gold(66, 18)
 
   private Player player
-
   private int pastGold
-
   private Sounds sounds
 
   GoldCore(GameView view, Sounds sounds, CommandInvocation ci) {
@@ -67,7 +65,7 @@ class GoldCore extends Thread {
   }
 
   private void moveRight() {
-    if (player.getPositionX() != 79) {
+    if (player.positionX != 79) {
       view.playerMoveRight(player)
       gameScore = gameScore - 15
       view.displayScore(gameScore)
@@ -76,7 +74,7 @@ class GoldCore extends Thread {
   }
 
   private void moveLeft() {
-    if (player.getPositionX() != 2) {
+    if (player.positionX != 2) {
       view.playerMoveLeft(player)
       gameScore = gameScore - 15
       view.displayScore(gameScore)
@@ -85,7 +83,7 @@ class GoldCore extends Thread {
   }
 
   private void moveUp() {
-    if (player.getPositionY() != 3) {
+    if (player.positionY != 3) {
       view.playerMoveUp(player)
       gameScore = gameScore - 15
       view.displayScore(gameScore)
@@ -94,7 +92,7 @@ class GoldCore extends Thread {
   }
 
   private void moveDown() {
-    if (player.getPositionY() != 23) {
+    if (player.positionY != 23) {
       view.playerMoveDown(player)
       gameScore = gameScore - 15
       view.displayScore(gameScore)
@@ -146,8 +144,8 @@ class GoldCore extends Thread {
       currentGold = g4
     }
 
-    if (player.getPositionX() == currentGold.getPositionX()
-        && player.getPositionY() == currentGold.getPositionY()) {
+    if (player.positionX == currentGold.positionX
+        && player.positionY == currentGold.positionY) {
       view.displayGold(player.increaseGold())
       gameScore = gameScore + 59
       view.displayScore(gameScore)
