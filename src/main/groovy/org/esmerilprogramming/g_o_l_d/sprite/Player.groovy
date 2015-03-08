@@ -20,6 +20,10 @@ class Player extends Sprite {
   int steps
   int gold
 
+  Player() {
+
+  }
+
   Player(int x, int y) {
     positionX = x
     positionY = y

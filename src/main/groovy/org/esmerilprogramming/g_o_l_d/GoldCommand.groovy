@@ -34,7 +34,7 @@ class GoldCommand implements Command<CommandInvocation> {
   @Override
   CommandResult execute(CommandInvocation ci) throws IOException, InterruptedException {
 
-    GameView view = new GameView(ci.getShell())
+    GameView view = new GameView(ci.shell)
     view.prepareScreen()
     view.displayInitialScreen()
 

@@ -20,7 +20,7 @@ import org.esmerilprogramming.g_o_l_d.graphics.GameView
  */
 class Timer extends Thread {
 
-  private intrcounter = 35
+  int counter = 35
   private GameView view
 
   Timer(GameView view) {
@@ -39,10 +39,6 @@ class Timer extends Thread {
       }
       counter = counter - 1
     }
-  }
-
-  int getCounter() {
-    return counter
   }
 
 }
