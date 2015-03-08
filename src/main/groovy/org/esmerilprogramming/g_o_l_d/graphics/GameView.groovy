@@ -167,7 +167,7 @@ class GameView {
   }
 
   void playerMoveDown(Player p) {
-    int oldStep = p.getPositionY()
+    int oldStep = p.positionY
     g.drawString(Player.CHARACTER, p.positionX, p.increasePositionY())
     g.drawString(" ", p.positionX, oldStep)
     increaseSteps(p)
