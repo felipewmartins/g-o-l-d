@@ -51,8 +51,8 @@ class GoldCommand implements Command<CommandInvocation> {
 
     sounds.stopMusic()
     core.interrupt()
-    ci.getShell().clear()
-    ci.getShell().enableMainBuffer()
+    ci.shell.clear()
+    ci.shell.enableMainBuffer()
     ci.stop()
     CommandResult.SUCCESS
   }
