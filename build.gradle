@@ -25,12 +25,6 @@ targetCompatibility = 1.7
 
 run.standardInput = System.in
 
-/*jar {
-  manifest {
-    attributes 'Implementation-Title': 'G-o-l-d', 'Implementation-Version': version, 'Main-Class': 'Main'
-  }
-}*/
-
 repositories {
   mavenCentral()
   mavenLocal()
